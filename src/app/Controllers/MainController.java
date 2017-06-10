@@ -139,7 +139,7 @@ public class MainController {
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
-            alert.setHeaderText("Error bij het inladen van het .painting bestand");
+            alert.setHeaderText("Something went wrong while loading your file.");
             alert.showAndWait();
         }
     }
