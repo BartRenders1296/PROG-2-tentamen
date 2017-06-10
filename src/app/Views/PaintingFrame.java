@@ -37,6 +37,7 @@ public class PaintingFrame extends Stage {
     private CheckMenuItem play;
 
     public PaintingFrame() {
+        centerOnScreen();
         setTitle("Bart Renders - Painting");
         root = new BorderPane();
         paintingPanel = new PaintingPanel(800, 580);

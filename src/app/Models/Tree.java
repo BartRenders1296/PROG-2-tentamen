@@ -16,9 +16,13 @@ public class Tree {
     private TreeType type;
     private double relX;
     private double relY;
+    private double speed;
 
     public void move() {
-        System.out.println("asdf");
+        this.relX = relX + speed;
+        if(this.relX >= 100){
+            this.relX = 0;
+        }
     }
 
     public double randomRelX(){
@@ -29,21 +33,26 @@ public class Tree {
         return new Random().nextInt(50) + 51;
     }
 
-    public TreeSize getSize() {
+    public TreeSize getTreeSize() {
         return size;
     }
 
     public void setSize() {
         if(getRelY() >= 50 && getRelY() < 60){
             this.size = TreeSize.S;
+            speed = 0.05;
         } else if(getRelY() >= 60 && getRelY() < 70){
             this.size = TreeSize.M;
+            speed = 0.15;
         } else if(getRelY() >= 70 && getRelY() < 80){
             this.size = TreeSize.L;
+            speed = 0.25;
         } else if(getRelY() >= 80 && getRelY() < 90){
             this.size = TreeSize.XL;
+            speed = 0.35;
         } else if(getRelY() >= 90 && getRelY() <= 100){
             this.size = TreeSize.XXL;
+            speed = 0.45;
         }
     }
 

@@ -31,6 +31,14 @@ public class World extends Observable {
             trees.add(tree);
         }
 
+        sortList();
+    }
+
+    public void addTree(Tree tree) {
+        trees.add(tree);
+    }
+
+    private void sortList() {
         Collections.sort(trees, new Comparator<Tree>() {
             @Override
             public int compare(Tree o1, Tree o2) {
