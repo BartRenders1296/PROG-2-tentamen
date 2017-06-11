@@ -1,6 +1,7 @@
 package app.Threads;
 
 import app.Models.Tree;
+import app.Models.World;
 import app.Views.PaintingPanel;
 
 import java.util.ArrayList;
@@ -11,53 +12,28 @@ import java.util.List;
  */
 public class MovieThread extends Thread {
 
-    private List<Tree> trees;
-    private boolean active;
-    private PaintingPanel paintingPanel;
+    private boolean active = true;
+    private World world;
 
-    public MovieThread() {
-        active = false;
-    }
-
-    public void setTrees(List<Tree> trees) {
-        this.trees = trees;
-    }
-
-    public void setPaintingPanel(PaintingPanel paintingPanel){
-        this.paintingPanel = paintingPanel;
+    public MovieThread(World world) {
+        this.world = world;
     }
 
     public void run() {
-        while(true){
-            System.out.print("");
-            if(active){
+        while(active){
+            try {
+                world.moveTrees();
 
-                List<Tree> treess = new ArrayList<>();
-
-                trees.forEach(Tree -> {
-                    Tree.move();
-                    treess.add(Tree);
-                });
-
-                paintingPanel.paintComponent(treess);
-
-                try {
-                    Thread.sleep( 1000/24);
-                }
-                catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                Thread.sleep( 1000/24);
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
 
-    public void toggle()
-    {
-        if(active){
-            active = false;
-        } else {
-            active = true;
-        }
+    public void toggle() {
+        active = !active;
     }
 
 }

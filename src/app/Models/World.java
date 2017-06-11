@@ -46,6 +46,11 @@ public class World extends Observable {
         notifyObservers();
     }
 
+    public void moveTrees() {
+        trees.forEach(Tree -> Tree.move());
+        notifyObserver();
+    }
+
     private void sortList() {
         Collections.sort(trees, new Comparator<Tree>() {
             @Override

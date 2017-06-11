@@ -25,7 +25,7 @@ public class MainController {
         paintingFrame = new PaintingFrame();
         paintingFrame.show();
         world = new World();
-        movieThread = new MovieThread();
+        movieThread = new MovieThread(world);
 
         world.addObserver(paintingFrame.getPaintingPanel());
 
@@ -68,13 +68,11 @@ public class MainController {
         });
 
         paintingFrame.getPlay().setOnAction(ActionEvent -> {
-            movieThread.setTrees(world.getTrees());
-            movieThread.setPaintingPanel(paintingFrame.getPaintingPanel());
            if(!movieThread.isAlive()) {
                movieThread.start();
-               movieThread.toggle();
            } else {
                movieThread.toggle();
+               movieThread = new MovieThread(world);
            }
         });
 
