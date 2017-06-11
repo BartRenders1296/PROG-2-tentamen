@@ -4,7 +4,6 @@ import app.Enums.TreeType;
 import app.Models.Tree;
 import app.Models.World;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 
 import java.util.List;
 import java.util.Observable;

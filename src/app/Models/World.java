@@ -10,7 +10,7 @@ import java.util.*;
  */
 public class World extends Observable {
 
-    List<Tree> trees = new ArrayList<>();
+    private List<Tree> trees = new ArrayList<>();
 
     public void addTree(TreeType treeType) {
         if(treeType.equals(TreeType.LEAF)){

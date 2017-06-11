@@ -4,17 +4,10 @@ import app.Enums.TreeType;
 import app.Models.Tree;
 import app.Models.World;
 import app.Threads.MovieThread;
-import app.Views.LeafTreePainter;
 import app.Views.PaintingFrame;
-import app.Views.PineTreePainter;
-import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
-
-import java.awt.event.ActionEvent;
 import java.io.*;
 import java.util.regex.Pattern;
 
@@ -44,13 +37,9 @@ public class MainController {
 
         paintingFrame.getExit().setOnAction(ActionEvent -> System.exit(0) );
 
-        paintingFrame.getAddLeaf().setOnAction(ActionEvent -> {
-            world.addTree(TreeType.LEAF);
-        });
+        paintingFrame.getAddLeaf().setOnAction(ActionEvent -> world.addTree(TreeType.LEAF));
 
-        paintingFrame.getAddPine().setOnAction(ActionEvent -> {
-            world.addTree(TreeType.PINE);
-        });
+        paintingFrame.getAddPine().setOnAction(ActionEvent -> world.addTree(TreeType.PINE));
 
         paintingFrame.getAddhundred().setOnAction(ActionEvent -> {
             for(int i = 0; i < 100; i++){
@@ -83,10 +72,8 @@ public class MainController {
             movieThread.setPaintingPanel(paintingFrame.getPaintingPanel());
            if(!movieThread.isAlive()) {
                movieThread.start();
-               //movieThread.setPaintingPanel(paintingFrame.getPaintingPanel());
                movieThread.toggle();
            } else {
-               //movieThread.setPaintingPanel(paintingFrame.getPaintingPanel());
                movieThread.toggle();
            }
         });

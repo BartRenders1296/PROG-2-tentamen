@@ -41,12 +41,10 @@ public class MovieThread extends Thread {
 
                 paintingPanel.paintComponent(treess);
 
-                try
-                {
+                try {
                     Thread.sleep( 1000/24);
                 }
-                catch (InterruptedException e)
-                {
+                catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
