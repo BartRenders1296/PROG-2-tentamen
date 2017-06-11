@@ -1,6 +1,7 @@
 package app.Views;
 
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -9,6 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 /**
@@ -38,7 +40,6 @@ public class PaintingFrame extends Stage {
     private CheckMenuItem play;
 
     public PaintingFrame() {
-        centerOnScreen();
         setTitle("Bart Renders - Painting");
         root = new Group();
         paintingPanel = new PaintingPanel(800, 575);
@@ -75,6 +76,9 @@ public class PaintingFrame extends Stage {
         setScene(new Scene(root, 800, 600));
         setResizable(false);
         sizeToScene();
+        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+        setX((primaryScreenBounds.getWidth() - 800) / 2);
+        setY((primaryScreenBounds.getHeight() - 600) / 2);
     }
 
     private MenuBar getMenu() {
