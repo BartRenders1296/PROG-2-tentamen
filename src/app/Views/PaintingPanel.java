@@ -2,6 +2,7 @@ package app.Views;
 
 import app.Enums.TreeType;
 import app.Models.Tree;
+import app.Models.World;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -35,7 +36,8 @@ public class PaintingPanel extends Canvas implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-
+        World world = (World) o;
+        paintComponent(world.getTrees());
     }
 
     public void clear() {

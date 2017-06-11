@@ -32,10 +32,17 @@ public class World extends Observable {
         }
 
         sortList();
+        notifyObserver();
     }
 
     public void addTree(Tree tree) {
         trees.add(tree);
+        notifyObserver();
+    }
+
+    private void notifyObserver() {
+        setChanged();
+        notifyObservers();
     }
 
     private void sortList() {

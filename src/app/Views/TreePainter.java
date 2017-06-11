@@ -11,6 +11,40 @@ import javafx.scene.shape.ArcType;
  */
 public abstract class TreePainter {
 
-    public void paintTree(Tree tree, GraphicsContext gc) {
+    private Tree tree;
+
+    private final double SCREEN_WIDTH = 800;
+    private final double SCREEN_HEIGHT = 575;
+    private final Color TREE_TRUNK = Color.rgb(170,69,2);
+
+    protected void paintTree(Tree tree, GraphicsContext gc) {
+    }
+
+    protected double calcX(Tree tree) {
+        return (SCREEN_WIDTH / 100 * tree.getRelX());
+    }
+
+    protected double calcY(Tree tree) {
+        return (SCREEN_HEIGHT / 100 * tree.getRelY()) - (tree.getTreeSize().getTotalHeight());
+    }
+
+    protected double getSCREEN_WIDTH() {
+        return SCREEN_WIDTH;
+    }
+
+    protected double getSCREEN_HEIGHT() {
+        return SCREEN_HEIGHT;
+    }
+
+    protected Color getTREE_TRUNK() {
+        return TREE_TRUNK;
+    }
+
+    public Tree getTree() {
+        return tree;
+    }
+
+    public void setTree(Tree tree) {
+        this.tree = tree;
     }
 }

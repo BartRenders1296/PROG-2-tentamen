@@ -1,6 +1,7 @@
 package app.Views;
 
 
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
@@ -16,7 +17,7 @@ import javafx.stage.Stage;
 public class PaintingFrame extends Stage {
 
     private PaintingPanel paintingPanel;
-    private BorderPane root;
+    private Group root;
 
     private MenuItem loadPainting;
     private MenuItem savePainting;
@@ -39,12 +40,13 @@ public class PaintingFrame extends Stage {
     public PaintingFrame() {
         centerOnScreen();
         setTitle("Bart Renders - Painting");
-        root = new BorderPane();
-        paintingPanel = new PaintingPanel(800, 580);
+        root = new Group();
+        paintingPanel = new PaintingPanel(800, 575);
+        paintingPanel.setTranslateY(25);
 
         autograph = new Text("Bart Renders");
         autograph.setTranslateX(650);
-        autograph.setTranslateY(250);
+        autograph.setTranslateY(570);
         autograph.setFont(Font.font("Arial", 20));
 
         BorderPane backgroundPane = new BorderPane();
@@ -57,20 +59,22 @@ public class PaintingFrame extends Stage {
         Pane bottomPane = new Pane();
         bottomPane.setStyle("-fx-background-color: sandybrown;");
         bottomPane.setMinWidth(paintingPanel.getWidth());
-        bottomPane.setMinHeight(paintingPanel.getHeight()/2 + 5);
+        bottomPane.setMinHeight(paintingPanel.getHeight()/2);
 
         backgroundPane.setTop(topPane);
-        bottomPane.getChildren().add(autograph);
-        backgroundPane.setBottom(bottomPane);
+        backgroundPane.setCenter(bottomPane);
 
         StackPane stackPane = new StackPane();
         stackPane.getChildren().addAll(backgroundPane, paintingPanel);
+        stackPane.setTranslateY(25);
 
-        root.setTop(getMenu());
-        root.setCenter(stackPane);
+        root.getChildren().add(getMenu());
+        root.getChildren().add(stackPane);
+        root.getChildren().add(autograph);
 
         setScene(new Scene(root, 800, 600));
         setResizable(false);
+        sizeToScene();
     }
 
     private MenuBar getMenu() {
@@ -110,6 +114,8 @@ public class PaintingFrame extends Stage {
         menuBar.prefWidthProperty().bind(widthProperty());
 
         menuBar.getMenus().addAll(fileMenu, treeMenu, fontMenu, movieMenu);
+
+        menuBar.toFront();
 
         return menuBar;
     }

@@ -33,6 +33,9 @@ public class MainController {
         paintingFrame.show();
         world = new World();
         movieThread = new MovieThread();
+
+        world.addObserver(paintingFrame.getPaintingPanel());
+
         init();
     }
 
@@ -43,19 +46,16 @@ public class MainController {
 
         paintingFrame.getAddLeaf().setOnAction(ActionEvent -> {
             world.addTree(TreeType.LEAF);
-            paintingFrame.getPaintingPanel().paintComponent(world.getTrees());
         });
 
         paintingFrame.getAddPine().setOnAction(ActionEvent -> {
             world.addTree(TreeType.PINE);
-            paintingFrame.getPaintingPanel().paintComponent(world.getTrees());
         });
 
         paintingFrame.getAddhundred().setOnAction(ActionEvent -> {
             for(int i = 0; i < 100; i++){
                 world.addTree(TreeType.getRandomType());
             }
-            paintingFrame.getPaintingPanel().paintComponent(world.getTrees());
         });
 
         paintingFrame.getArial().setSelected(true);
@@ -79,14 +79,14 @@ public class MainController {
         });
 
         paintingFrame.getPlay().setOnAction(ActionEvent -> {
+            movieThread.setTrees(world.getTrees());
+            movieThread.setPaintingPanel(paintingFrame.getPaintingPanel());
            if(!movieThread.isAlive()) {
                movieThread.start();
-               movieThread.setPaintingPanel(paintingFrame.getPaintingPanel());
-               movieThread.setTrees(world.getTrees());
+               //movieThread.setPaintingPanel(paintingFrame.getPaintingPanel());
                movieThread.toggle();
            } else {
-               movieThread.setPaintingPanel(paintingFrame.getPaintingPanel());
-               movieThread.setTrees(world.getTrees());
+               //movieThread.setPaintingPanel(paintingFrame.getPaintingPanel());
                movieThread.toggle();
            }
         });

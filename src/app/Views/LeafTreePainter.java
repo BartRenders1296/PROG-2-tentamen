@@ -9,31 +9,25 @@ import javafx.scene.paint.Color;
  */
 public class LeafTreePainter extends TreePainter {
 
-    private Tree tree;
-
-    private final double SCREEN_WIDTH = 800;
-    private final double SCREEN_HEIGHT = 600;
-    private final Color TREE_TRUNK = Color.rgb(170,69,2);
-
     public LeafTreePainter(Tree tree) {
-        this.tree = tree;
+        setTree(tree);
     }
 
     public void paintTree(GraphicsContext gc) {
-        double xpos = (SCREEN_WIDTH / 100 * tree.getRelX());
+        double xpos = calcX(getTree());
 
-        if(xpos < (tree.getTreeSize().getLeafSize() / 2) || xpos - (tree.getTreeSize().getLeafSize() * 2) > SCREEN_WIDTH){
-            paintTree(tree, gc);
+        if(xpos < (getTree().getTreeSize().getLeafSize() / 2) || xpos - (getTree().getTreeSize().getLeafSize() * 2) > getSCREEN_WIDTH()){
+            paintTree(getTree(), gc);
         } else {
-            double ypos = (SCREEN_HEIGHT / 100 * tree.getRelY()) - (tree.getTreeSize().getTotalHeight());
+            double ypos = calcY(getTree());
 
-            gc.setFill(TREE_TRUNK);
-            gc.fillRect(xpos - (tree.getTreeSize().getTrunkWidth() / 2), ypos - 5, tree.getTreeSize().getTrunkWidth(), tree.getTreeSize().getTrunkHeight());
-            gc.strokeRect(xpos - (tree.getTreeSize().getTrunkWidth() / 2), ypos - 5, tree.getTreeSize().getTrunkWidth(), tree.getTreeSize().getTrunkHeight());
+            gc.setFill(getTREE_TRUNK());
+            gc.fillRect(xpos - (getTree().getTreeSize().getTrunkWidth() / 2), ypos - 5, getTree().getTreeSize().getTrunkWidth(), getTree().getTreeSize().getTrunkHeight());
+            gc.strokeRect(xpos - (getTree().getTreeSize().getTrunkWidth() / 2), ypos - 5, getTree().getTreeSize().getTrunkWidth(), getTree().getTreeSize().getTrunkHeight());
 
-            gc.setFill(tree.getColor());
-            gc.fillOval(xpos - (tree.getTreeSize().getLeafSize() / 2), ypos - tree.getTreeSize().getLeafSize(), tree.getTreeSize().getLeafSize(), tree.getTreeSize().getLeafSize());
-            gc.strokeOval(xpos - (tree.getTreeSize().getLeafSize() / 2), ypos - tree.getTreeSize().getLeafSize(), tree.getTreeSize().getLeafSize(), tree.getTreeSize().getLeafSize());
+            gc.setFill(getTree().getColor());
+            gc.fillOval(xpos - (getTree().getTreeSize().getLeafSize() / 2), ypos - getTree().getTreeSize().getLeafSize(), getTree().getTreeSize().getLeafSize(), getTree().getTreeSize().getLeafSize());
+            gc.strokeOval(xpos - (getTree().getTreeSize().getLeafSize() / 2), ypos - getTree().getTreeSize().getLeafSize(), getTree().getTreeSize().getLeafSize(), getTree().getTreeSize().getLeafSize());
         }
     }
 
