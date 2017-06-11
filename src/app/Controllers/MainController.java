@@ -113,14 +113,16 @@ public class MainController {
         fileChooser.setInitialDirectory(userDirectory);
         File selectedFile = fileChooser.showOpenDialog(paintingFrame);
         if (selectedFile != null && getFileExtension(selectedFile).equals("painting")) {
+            paintingFrame.getPaintingPanel().clear();
+            world.getTrees().clear();
             try {
                 BufferedReader br = new BufferedReader(new FileReader(selectedFile));
                 String line;
                 while ((line = br.readLine()) != null) {
                     String[] parts = line.split(Pattern.quote(":"));
                     if(parts != null){
-                        if(!parts[0].isEmpty()){
                             Tree tree = new Tree();
+                        if(!parts[0].isEmpty() && !parts[2].isEmpty() && !parts[3].isEmpty()){
                             tree.setType(TreeType.getType(parts[0]));
                             tree.setRelX(new Double(parts[2]));
                             tree.setRelY(new Double(parts[3]));

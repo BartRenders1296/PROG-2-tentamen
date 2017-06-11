@@ -37,6 +37,7 @@ public class World extends Observable {
 
     public void addTree(Tree tree) {
         trees.add(tree);
+        sortList();
         notifyObserver();
     }
 
