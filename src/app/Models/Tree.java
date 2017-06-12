@@ -83,4 +83,8 @@ public class Tree {
     public Color getColor() {
         return TreeColor.getColor(type, size).getColor();
     }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
 }
