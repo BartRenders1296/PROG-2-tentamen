@@ -68,12 +68,12 @@ public class MainController {
         });
 
         paintingFrame.getPlay().setOnAction(ActionEvent -> {
-           if(!movieThread.isAlive()) {
-               movieThread.start();
-           } else {
-               movieThread.toggle();
-               movieThread = new MovieThread(world);
-           }
+            if(paintingFrame.getPlay().isSelected()){
+                movieThread.start();
+            } else {
+                movieThread.toggle();
+                movieThread = new MovieThread(world);
+            }
         });
 
         paintingFrame.getClearTrees().setOnAction(ActionEvent -> {

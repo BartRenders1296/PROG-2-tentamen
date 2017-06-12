@@ -3,6 +3,7 @@ package app.Threads;
 import app.Models.Tree;
 import app.Models.World;
 import app.Views.PaintingPanel;
+import javafx.application.Platform;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class MovieThread extends Thread {
     public void run() {
         while(active){
             try {
-                world.moveTrees();
+                Platform.runLater(() -> world.moveTrees());
 
                 Thread.sleep( 1000/24);
             }
