@@ -118,7 +118,6 @@ public class MainController {
                     }
                 }
                 br.close();
-                paintingFrame.getPaintingPanel().paintComponent(world.getTrees());
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
