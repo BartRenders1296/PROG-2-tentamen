@@ -53,7 +53,7 @@ public class MainController {
         });
 
         paintingFrame.getCourier().setOnAction(ActionEvent -> {
-            paintingFrame.getAutograph().setFont(Font.font("Courier", paintingFrame.getAutograph().getFont().getSize()));
+            paintingFrame.getAutograph().setFont(Font.font("Courier New", paintingFrame.getAutograph().getFont().getSize()));
             paintingFrame.getCourier().setSelected(true);
         });
 

@@ -13,8 +13,8 @@ public abstract class TreePainter {
 
     private Tree tree;
 
-    private final double SCREEN_WIDTH = 800;
-    private final double SCREEN_HEIGHT = 575;
+    private final double SCREEN_WIDTH = 800.0;
+    private final double SCREEN_HEIGHT = 575.0;
     private final Color TREE_TRUNK = Color.rgb(170,69,2);
 
     protected void paintTree(Tree tree, GraphicsContext gc) {
@@ -25,7 +25,7 @@ public abstract class TreePainter {
     }
 
     protected double calcY(Tree tree) {
-        return (SCREEN_HEIGHT / 100 * tree.getRelY()) - (tree.getTreeSize().getTotalHeight());
+        return (SCREEN_HEIGHT / 100.0 * tree.getRelY()) - (tree.getTreeSize().getTotalHeight());
     }
 
     protected double getSCREEN_WIDTH() {
