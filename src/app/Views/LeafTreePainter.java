@@ -31,5 +31,4 @@ public class LeafTreePainter extends TreePainter {
             gc.strokeOval(xpos - (getTree().getTreeSize().getLeafSize() / 2.0), ypos - getTree().getTreeSize().getLeafSize(), getTree().getTreeSize().getLeafSize(), getTree().getTreeSize().getLeafSize());
         }
     }
-
 }
