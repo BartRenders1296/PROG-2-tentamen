@@ -1,7 +1,6 @@
 package app.Models;
 
 import app.Enums.TreeType;
-import app.Threads.MovieThread;
 
 import java.util.*;
 
@@ -13,7 +12,7 @@ public class World extends Observable {
     private List<Tree> trees = new ArrayList<>();
 
     public void addTree(TreeType treeType) {
-        if(treeType.equals(TreeType.LEAF)){
+        if (treeType.equals(TreeType.LEAF)) {
             Tree tree = new Tree();
             tree.setType(TreeType.LEAF);
             tree.setRelX(tree.randomRelX());

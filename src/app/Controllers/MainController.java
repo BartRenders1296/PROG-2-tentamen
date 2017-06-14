@@ -8,6 +8,7 @@ import app.Views.PaintingFrame;
 import javafx.scene.control.Alert;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
+
 import java.io.*;
 import java.util.regex.Pattern;
 
@@ -33,16 +34,16 @@ public class MainController {
     }
 
     private void init() {
-        paintingFrame.setOnCloseRequest(ActionEvent -> System.exit(0) );
+        paintingFrame.setOnCloseRequest(ActionEvent -> System.exit(0));
 
-        paintingFrame.getExit().setOnAction(ActionEvent -> System.exit(0) );
+        paintingFrame.getExit().setOnAction(ActionEvent -> System.exit(0));
 
         paintingFrame.getAddLeaf().setOnAction(ActionEvent -> world.addTree(TreeType.LEAF));
 
         paintingFrame.getAddPine().setOnAction(ActionEvent -> world.addTree(TreeType.PINE));
 
         paintingFrame.getAddhundred().setOnAction(ActionEvent -> {
-            for(int i = 0; i < 100; i++){
+            for (int i = 0; i < 100; i++) {
                 world.addTree(TreeType.getRandomType());
             }
         });
@@ -68,7 +69,7 @@ public class MainController {
         });
 
         paintingFrame.getPlay().setOnAction(ActionEvent -> {
-            if(paintingFrame.getPlay().isSelected()){
+            if (paintingFrame.getPlay().isSelected()) {
                 movieThread.start();
             } else {
                 movieThread.toggle();
@@ -92,7 +93,7 @@ public class MainController {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Painting files (*.painting)", "*.painting"));
         String userDirectoryString = "paintings";
         File userDirectory = new File(userDirectoryString);
-        if(!userDirectory.canRead()) {
+        if (!userDirectory.canRead()) {
             userDirectory = new File("c:/");
         }
         fileChooser.setInitialDirectory(userDirectory);
@@ -105,9 +106,9 @@ public class MainController {
                 String line;
                 while ((line = br.readLine()) != null) {
                     String[] parts = line.split(Pattern.quote(":"));
-                    if(parts != null){
-                            Tree tree = new Tree();
-                        if(!parts[0].isEmpty() && !parts[2].isEmpty() && !parts[3].isEmpty()){
+                    if (parts != null) {
+                        Tree tree = new Tree();
+                        if (!parts[0].isEmpty() && !parts[2].isEmpty() && !parts[3].isEmpty()) {
                             tree.setType(TreeType.getType(parts[0]));
                             tree.setRelX(new Double(parts[2]));
                             tree.setRelY(new Double(parts[3]));
@@ -138,13 +139,13 @@ public class MainController {
         fileChooser.getExtensionFilters().add(extFilter);
         String userDirectoryString = "paintings";
         File userDirectory = new File(userDirectoryString);
-        if(!userDirectory.canRead()) {
+        if (!userDirectory.canRead()) {
             userDirectory = new File("c:/");
         }
         fileChooser.setInitialDirectory(userDirectory);
         File file = fileChooser.showSaveDialog(paintingFrame);
 
-        if(file != null){
+        if (file != null) {
             FileWriter writer = null;
             try {
                 writer = new FileWriter(file);
@@ -171,8 +172,8 @@ public class MainController {
 
     private static String getFileExtension(File file) {
         String fileName = file.getName();
-        if(fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0){
-            return fileName.substring(fileName.lastIndexOf(".")+1);
+        if (fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0) {
+            return fileName.substring(fileName.lastIndexOf(".") + 1);
         } else {
             return "";
         }

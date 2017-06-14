@@ -55,12 +55,12 @@ public class PaintingFrame extends Stage {
         Pane topPane = new Pane();
         topPane.setStyle("-fx-background-color: skyblue;");
         topPane.setMinWidth(paintingPanel.getWidth());
-        topPane.setMinHeight(paintingPanel.getHeight()/2);
+        topPane.setMinHeight(paintingPanel.getHeight() / 2);
 
         Pane bottomPane = new Pane();
         bottomPane.setStyle("-fx-background-color: sandybrown;");
         bottomPane.setMinWidth(paintingPanel.getWidth());
-        bottomPane.setMinHeight(paintingPanel.getHeight()/2);
+        bottomPane.setMinHeight(paintingPanel.getHeight() / 2);
 
         backgroundPane.setTop(topPane);
         backgroundPane.setCenter(bottomPane);

@@ -2,8 +2,6 @@ package app.Views;
 
 import app.Models.Tree;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 /**
  * Created by Bart Renders on 10-6-2017.
@@ -17,7 +15,7 @@ public class LeafTreePainter extends TreePainter {
     public void paintTree(GraphicsContext gc) {
         double xpos = calcX(getTree());
 
-        if(xpos < (getTree().getTreeSize().getLeafSize() / 2.0) || xpos - (getTree().getTreeSize().getLeafSize() * 2.0) > getSCREEN_WIDTH()){
+        if (xpos < (getTree().getTreeSize().getLeafSize() / 2.0) || xpos - (getTree().getTreeSize().getLeafSize() * 2.0) > getSCREEN_WIDTH()) {
             paintTree(getTree(), gc);
         } else {
             double ypos = calcY(getTree());

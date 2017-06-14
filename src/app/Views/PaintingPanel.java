@@ -23,7 +23,7 @@ public class PaintingPanel extends Canvas implements Observer {
         clear();
 
         trees.forEach(Tree -> {
-            if(Tree.getType().equals(TreeType.LEAF)){
+            if (Tree.getType().equals(TreeType.LEAF)) {
                 LeafTreePainter leafTreePainter = new LeafTreePainter(Tree);
                 leafTreePainter.paintTree(getGraphicsContext2D());
             } else {
@@ -40,6 +40,6 @@ public class PaintingPanel extends Canvas implements Observer {
     }
 
     public void clear() {
-        getGraphicsContext2D().clearRect(0,0, getGraphicsContext2D().getCanvas().getWidth(), getGraphicsContext2D().getCanvas().getHeight());
+        getGraphicsContext2D().clearRect(0, 0, getGraphicsContext2D().getCanvas().getWidth(), getGraphicsContext2D().getCanvas().getHeight());
     }
 }

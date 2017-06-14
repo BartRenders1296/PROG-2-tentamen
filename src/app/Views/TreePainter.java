@@ -1,10 +1,8 @@
 package app.Views;
 
-import app.Enums.TreeColor;
 import app.Models.Tree;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.ArcType;
 
 /**
  * Created by Bart Renders on 10-6-2017.
@@ -15,7 +13,7 @@ public abstract class TreePainter {
 
     private final double SCREEN_WIDTH = 800.0;
     private final double SCREEN_HEIGHT = 575.0;
-    private final Color TREE_TRUNK = Color.rgb(170,69,2);
+    private final Color TREE_TRUNK = Color.rgb(170, 69, 2);
 
     protected void paintTree(Tree tree, GraphicsContext gc) {
     }

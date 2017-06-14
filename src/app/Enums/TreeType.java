@@ -23,7 +23,7 @@ public enum TreeType {
         return TreeType.values()[pick];
     }
 
-    public static TreeType getType(String filePrefix){
+    public static TreeType getType(String filePrefix) {
         return TreeType.valueOf(filePrefix.toUpperCase());
     }
 }
