@@ -88,6 +88,10 @@ public class MainController {
     }
 
     private void loadPainting() {
+
+
+
+
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Painting files (*.painting)", "*.painting"));
