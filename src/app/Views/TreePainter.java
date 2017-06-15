@@ -1,5 +1,6 @@
 package app.Views;
 
+import app.Enums.TreeSize;
 import app.Enums.TreeType;
 import app.Models.Tree;
 import javafx.scene.canvas.GraphicsContext;
@@ -16,7 +17,8 @@ public abstract class TreePainter {
     private final double SCREEN_HEIGHT = 575.0;
     private final Color TREE_TRUNK = Color.rgb(170, 69, 2);
     private double totalHeight;
-    private double leafSize;
+    private double leafWidth;
+    private double leafHeight;
     private double trunkHeight;
     private double trunkWidth;
 
@@ -35,14 +37,16 @@ public abstract class TreePainter {
         totalHeight = tree.getRelY() * 1.5;
 
         if(tree.getType().equals(TreeType.LEAF)){
-            leafSize = totalHeight / 2.0;
-            trunkHeight = totalHeight - leafSize;
+            leafWidth = totalHeight / 2.0;
+            trunkHeight = totalHeight - leafWidth;
             trunkWidth = trunkHeight * 0.2;
+            leafHeight = leafWidth;
         } else {
-
+            leafWidth = totalHeight / 2.0;
+            trunkHeight = totalHeight - leafWidth;
+            trunkWidth = trunkHeight * 0.2;
+            leafHeight = totalHeight - trunkHeight;
         }
-
-
     }
 
     protected double getSCREEN_WIDTH() {
@@ -69,8 +73,12 @@ public abstract class TreePainter {
         return totalHeight;
     }
 
-    public double getLeafSize() {
-        return leafSize;
+    public double getLeafWidth() {
+        return leafWidth;
+    }
+
+    public double getLeafHeight() {
+        return leafHeight;
     }
 
     public double getTrunkHeight() {

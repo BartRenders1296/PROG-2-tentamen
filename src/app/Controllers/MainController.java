@@ -114,6 +114,7 @@ public class MainController {
                             tree.setSize(TreeSize.valueOf(TreeSize.class, parts[1]));
                             tree.setRelX(new Double(parts[2]));
                             tree.setRelY(new Double(parts[3]));
+                            tree.setSpeed();
                             world.addTree(tree);
                         }
                     }

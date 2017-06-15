@@ -14,6 +14,28 @@ public class PineTreePainter extends TreePainter {
     }
 
     public void paintTree(GraphicsContext gc) {
+        Tree tree = getTree();
+        calcSize();
 
+        gc.setFill(getTREE_TRUNK());
+
+        gc.setFill(getTREE_TRUNK());
+        gc.strokeRect(calcX(), calcY() - 25.0, getTrunkWidth(), getTrunkHeight());
+        gc.fillRect(calcX(), calcY() - 25.0, getTrunkWidth(), getTrunkHeight());
+
+        gc.setFill(tree.getColor());
+        double[] doubleX = {
+                calcX() - ((getLeafWidth() / 2.0) - (getTrunkWidth() / 2.0)),
+                calcX() + ((getLeafWidth() / 2.0) + (getTrunkWidth() / 2.0)),
+                calcX() + getTrunkWidth() / 2
+        };
+
+        double[] doubleY = {
+                calcY() - getTrunkHeight() / 100,
+                calcY() - getTrunkHeight() / 100,
+                calcY() - getTrunkHeight() - getLeafHeight()
+        };
+        gc.fillPolygon(doubleX, doubleY, 3);
+        gc.strokePolygon(doubleX, doubleY, 3);
     }
 }

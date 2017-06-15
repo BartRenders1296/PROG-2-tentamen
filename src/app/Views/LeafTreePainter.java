@@ -16,14 +16,13 @@ public class LeafTreePainter extends TreePainter {
     public void paintTree(GraphicsContext gc) {
         Tree tree = getTree();
         calcSize();
-        double totalHeight = getTotalHeight();
 
         gc.setFill(getTREE_TRUNK());
-        gc.strokeRect(calcX() + ((getLeafSize() / 2.0) - (getTrunkWidth() / 2.0)), calcY() - 25.0, getTrunkWidth(), getTrunkHeight());
-        gc.fillRect(calcX() + ((getLeafSize() / 2.0) - (getTrunkWidth() / 2.0)), calcY() - 25.0, getTrunkWidth(), getTrunkHeight());
+        gc.strokeRect(calcX() + ((getLeafWidth() / 2.0) - (getTrunkWidth() / 2.0)), calcY() - 25.0, getTrunkWidth(), getTrunkHeight());
+        gc.fillRect(calcX() + ((getLeafWidth() / 2.0) - (getTrunkWidth() / 2.0)), calcY() - 25.0, getTrunkWidth(), getTrunkHeight());
 
         gc.setFill(tree.getColor());
-        gc.strokeOval(calcX(), calcY() - getTrunkHeight() - 20.0, getLeafSize(), getLeafSize());
-        gc.fillOval(calcX(), calcY() - getTrunkHeight() - 20.0, getLeafSize(), getLeafSize());
+        gc.strokeOval(calcX(), calcY() - getTrunkHeight() - 20.0, getLeafWidth(), getLeafHeight());
+        gc.fillOval(calcX(), calcY() - getTrunkHeight() - 20.0, getLeafWidth(), getLeafHeight());
     }
 }

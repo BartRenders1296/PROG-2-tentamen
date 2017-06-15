@@ -73,7 +73,17 @@ public class Tree {
         return TreeColor.getColor(type, size).getColor();
     }
 
-    public void setSpeed(double speed) {
-        this.speed = speed;
+    public void setSpeed() {
+        if (getRelY() >= 50 && getRelY() < 60) {
+            speed = 0.05;
+        } else if (getRelY() >= 60 && getRelY() < 70) {
+            speed = 0.15;
+        } else if (getRelY() >= 70 && getRelY() < 80) {
+            speed = 0.25;
+        } else if (getRelY() >= 80 && getRelY() < 90) {
+            speed = 0.35;
+        } else if (getRelY() >= 90 && getRelY() <= 100) {
+            speed = 0.45;
+        }
     }
 }
