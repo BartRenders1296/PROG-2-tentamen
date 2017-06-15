@@ -26,7 +26,7 @@ public abstract class TreePainter {
     }
 
     protected double calcX() {
-        return (SCREEN_WIDTH / 100 * tree.getRelX());
+        return (SCREEN_WIDTH / 100 * tree.getRelX()) - leafWidth;
     }
 
     protected double calcY() {
@@ -34,18 +34,43 @@ public abstract class TreePainter {
     }
 
     protected void calcSize() {
-        totalHeight = tree.getRelY() * 1.5;
-
-        if(tree.getType().equals(TreeType.LEAF)){
-            leafWidth = totalHeight / 2.0;
-            trunkHeight = totalHeight - leafWidth;
-            trunkWidth = trunkHeight * 0.2;
-            leafHeight = leafWidth;
-        } else {
-            leafWidth = totalHeight / 2.0;
-            trunkHeight = totalHeight - leafWidth;
-            trunkWidth = trunkHeight * 0.2;
-            leafHeight = totalHeight - trunkHeight;
+        double distancePercentage = ((((tree.getRelY() - 50) * 90) / 50) + 10) / 100;
+        switch (tree.getTreeSize()) {
+            case S:
+                trunkHeight = 30.0 * distancePercentage;
+                trunkWidth = 7.0 * distancePercentage;
+                leafHeight = 25.0 * distancePercentage;
+                leafWidth = 25.0 * distancePercentage;
+                totalHeight = trunkHeight + leafHeight;
+                break;
+            case M:
+                trunkHeight = 50.0 * distancePercentage;
+                trunkWidth = 11.0 * distancePercentage;
+                leafHeight = 41.0 * distancePercentage;
+                leafWidth = 41.0 * distancePercentage;
+                totalHeight = trunkHeight + leafHeight;
+                break;
+            case L:
+                trunkHeight = 70.0 * distancePercentage;
+                trunkWidth = 15.0 * distancePercentage;
+                leafHeight = 57.0 * distancePercentage;
+                leafWidth = 57.0 * distancePercentage;
+                totalHeight = trunkHeight + leafHeight;
+                break;
+            case XL:
+                trunkHeight = 90.0 * distancePercentage;
+                trunkWidth = 17.0 * distancePercentage;
+                leafHeight = 74.0 * distancePercentage;
+                leafWidth = 74.0 * distancePercentage;
+                totalHeight = trunkHeight + leafHeight;
+                break;
+            case XXL:
+                trunkHeight = 110.0 * distancePercentage;
+                trunkWidth = 24.0 * distancePercentage;
+                leafHeight = 90.0 * distancePercentage;
+                leafWidth = 90.0 * distancePercentage;
+                totalHeight = trunkHeight + leafHeight;
+                break;
         }
     }
 

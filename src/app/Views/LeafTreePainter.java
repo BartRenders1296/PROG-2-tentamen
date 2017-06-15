@@ -22,7 +22,7 @@ public class LeafTreePainter extends TreePainter {
         gc.fillRect(calcX() + ((getLeafWidth() / 2.0) - (getTrunkWidth() / 2.0)), calcY() - 25.0, getTrunkWidth(), getTrunkHeight());
 
         gc.setFill(tree.getColor());
-        gc.strokeOval(calcX(), calcY() - getTrunkHeight() - 20.0, getLeafWidth(), getLeafHeight());
-        gc.fillOval(calcX(), calcY() - getTrunkHeight() - 20.0, getLeafWidth(), getLeafHeight());
+        gc.strokeOval(calcX(), calcY() - 25.0 - (getTrunkHeight() / 2.0), getLeafWidth(), getLeafHeight());
+        gc.fillOval(calcX(), calcY() - 25.0 - (getTrunkHeight() / 2.0), getLeafWidth(), getLeafHeight());
     }
 }
