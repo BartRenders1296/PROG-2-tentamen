@@ -14,33 +14,28 @@ public class PineTreePainter extends TreePainter {
     }
 
     public void paintTree(GraphicsContext gc) {
-        double xpos = calcX(getTree());
+        Tree tree = getTree();
+        calcSize();
 
-        if (xpos < (getTree().getTreeSize().getLeafSize() / 2.0) || xpos - (getTree().getTreeSize().getLeafSize() * 2.0) > getSCREEN_WIDTH()) {
-            paintTree(getTree(), gc);
-        } else {
-            double ypos = calcY(getTree());
+        gc.setFill(getTREE_TRUNK());
 
-            gc.setFill(getTREE_TRUNK());
-            gc.fillRect(xpos - (getTree().getTreeSize().getTrunkWidth() / 2.0), ypos, getTree().getTreeSize().getTrunkWidth(), getTree().getTreeSize().getTrunkHeight());
-            gc.strokeRect(xpos - (getTree().getTreeSize().getTrunkWidth() / 2.0), ypos, getTree().getTreeSize().getTrunkWidth(), getTree().getTreeSize().getTrunkHeight());
+        gc.setFill(getTREE_TRUNK());
+        gc.strokeRect(calcX(), calcY() - 25.0, getTrunkWidth(), getTrunkHeight());
+        gc.fillRect(calcX(), calcY() - 25.0, getTrunkWidth(), getTrunkHeight());
 
-            gc.setFill(getTree().getColor());
+        gc.setFill(tree.getColor());
+        double[] doubleX = {
+                calcX() - ((getLeafWidth() / 2.0) - (getTrunkWidth() / 2.0)),
+                calcX() + ((getLeafWidth() / 2.0) + (getTrunkWidth() / 2.0)),
+                calcX() + getTrunkWidth() / 2
+        };
 
-            double[] doubleX = {
-                    xpos - getTree().getTreeSize().getLeafSize() / 2.0 - getTree().getTreeSize().getTrunkWidth() / 2.0,
-                    xpos + getTree().getTreeSize().getLeafSize() / 2.0 + getTree().getTreeSize().getTrunkWidth() * 1.5,
-                    xpos + getTree().getTreeSize().getTrunkWidth() / 2.0
-            };
-
-            double[] doubleY = {
-                    ypos - getTree().getTreeSize().getTrunkHeight() / 100.0 + 20.0,
-                    ypos - getTree().getTreeSize().getTrunkHeight() / 100.0 + 20.0,
-                    ypos - getTree().getTreeSize().getTrunkHeight() - getTree().getTreeSize().getLeafSize() + 20.0
-            };
-
-            gc.fillPolygon(doubleX, doubleY, 3);
-            gc.strokePolygon(doubleX, doubleY, 3);
-        }
+        double[] doubleY = {
+                calcY() - getTrunkHeight() / 100,
+                calcY() - getTrunkHeight() / 100,
+                calcY() - getTrunkHeight() - getLeafHeight()
+        };
+        gc.fillPolygon(doubleX, doubleY, 3);
+        gc.strokePolygon(doubleX, doubleY, 3);
     }
 }

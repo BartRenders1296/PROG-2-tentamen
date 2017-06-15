@@ -2,6 +2,7 @@ package app.Views;
 
 import app.Models.Tree;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 /**
  * Created by Bart Renders on 10-6-2017.
@@ -13,20 +14,15 @@ public class LeafTreePainter extends TreePainter {
     }
 
     public void paintTree(GraphicsContext gc) {
-        double xpos = calcX(getTree());
+        Tree tree = getTree();
+        calcSize();
 
-        if (xpos < (getTree().getTreeSize().getLeafSize() / 2.0) || xpos - (getTree().getTreeSize().getLeafSize() * 2.0) > getSCREEN_WIDTH()) {
-            paintTree(getTree(), gc);
-        } else {
-            double ypos = calcY(getTree());
+        gc.setFill(getTREE_TRUNK());
+        gc.strokeRect(calcX() + ((getLeafWidth() / 2.0) - (getTrunkWidth() / 2.0)), calcY() - 25.0, getTrunkWidth(), getTrunkHeight());
+        gc.fillRect(calcX() + ((getLeafWidth() / 2.0) - (getTrunkWidth() / 2.0)), calcY() - 25.0, getTrunkWidth(), getTrunkHeight());
 
-            gc.setFill(getTREE_TRUNK());
-            gc.fillRect(xpos - (getTree().getTreeSize().getTrunkWidth() / 2.0), ypos - 5.0, getTree().getTreeSize().getTrunkWidth(), getTree().getTreeSize().getTrunkHeight());
-            gc.strokeRect(xpos - (getTree().getTreeSize().getTrunkWidth() / 2.0), ypos - 5.0, getTree().getTreeSize().getTrunkWidth(), getTree().getTreeSize().getTrunkHeight());
-
-            gc.setFill(getTree().getColor());
-            gc.fillOval(xpos - (getTree().getTreeSize().getLeafSize() / 2.0), ypos - getTree().getTreeSize().getLeafSize(), getTree().getTreeSize().getLeafSize(), getTree().getTreeSize().getLeafSize());
-            gc.strokeOval(xpos - (getTree().getTreeSize().getLeafSize() / 2.0), ypos - getTree().getTreeSize().getLeafSize(), getTree().getTreeSize().getLeafSize(), getTree().getTreeSize().getLeafSize());
-        }
+        gc.setFill(tree.getColor());
+        gc.strokeOval(calcX(), calcY() - getTrunkHeight() - 20.0, getLeafWidth(), getLeafHeight());
+        gc.fillOval(calcX(), calcY() - getTrunkHeight() - 20.0, getLeafWidth(), getLeafHeight());
     }
 }

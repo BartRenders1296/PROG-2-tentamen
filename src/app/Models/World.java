@@ -12,23 +12,20 @@ public class World extends Observable {
     private List<Tree> trees = new ArrayList<>();
 
     public void addTree(TreeType treeType) {
+        Tree tree = new Tree();
+
         if (treeType.equals(TreeType.LEAF)) {
-            Tree tree = new Tree();
             tree.setType(TreeType.LEAF);
-            tree.setRelX(tree.randomRelX());
-            tree.setRelY(tree.randomRelY());
-            tree.setSize();
-
-            trees.add(tree);
         } else {
-            Tree tree = new Tree();
             tree.setType(TreeType.PINE);
-            tree.setRelX(tree.randomRelX());
-            tree.setRelY(tree.randomRelY());
-            tree.setSize();
-
-            trees.add(tree);
         }
+
+        tree.setRelX(tree.randomRelX());
+        tree.setRelY(tree.randomRelY());
+        tree.setSize();
+        tree.setSpeed();
+
+        trees.add(tree);
 
         sortList();
         notifyObserver();

@@ -1,5 +1,6 @@
 package app.Controllers;
 
+import app.Enums.TreeSize;
 import app.Enums.TreeType;
 import app.Models.Tree;
 import app.Models.World;
@@ -110,9 +111,10 @@ public class MainController {
                         Tree tree = new Tree();
                         if (!parts[0].isEmpty() && !parts[2].isEmpty() && !parts[3].isEmpty()) {
                             tree.setType(TreeType.getType(parts[0]));
+                            tree.setSize(TreeSize.valueOf(TreeSize.class, parts[1]));
                             tree.setRelX(new Double(parts[2]));
                             tree.setRelY(new Double(parts[3]));
-                            tree.setSize();
+                            tree.setSpeed();
                             world.addTree(tree);
                         }
                     }

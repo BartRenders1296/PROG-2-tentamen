@@ -35,8 +35,10 @@ public class PaintingPanel extends Canvas implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        World world = (World) o;
-        paintComponent(world.getTrees());
+        if(o instanceof World) {
+            World world = (World) o;
+            paintComponent(world.getTrees());
+        }
     }
 
     public void clear() {
